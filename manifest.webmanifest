@@ -1,0 +1,17 @@
+{
+  "name": "إجراءات التحكيم – منصة تدريبية",
+  "short_name": "إجراءات التحكيم",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fa",
+  "theme_color": "#10233d",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

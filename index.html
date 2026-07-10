@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#10233d" />
+  <meta name="description" content="منصة تدريبية تفاعلية حول إجراءات التحكيم: بدء الإجراءات، طلب التحكيم، الرد، الدفوع الأولية، الجلسة الإجرائية الأولى والتطبيق العملي." />
+  <meta property="og:title" content="إجراءات التحكيم | منصة تدريبية تفاعلية" />
+  <meta property="og:description" content="محاضرة تدريبية قانونية تفاعلية بإشراف د. أحمد محمد عبدالسلام." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>إجراءات التحكيم | منصة تدريبية</title>
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">انتقل إلى المحتوى</a>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="العودة إلى الصفحة الرئيسية">
+      <span class="brand-mark" aria-hidden="true">م</span>
+      <span>
+        <strong>مختبر التحكيم</strong>
+        <small>Arbitration Lab</small>
+      </span>
+    </a>
+
+    <nav class="top-actions" aria-label="أدوات المنصة">
+      <button id="searchToggle" class="icon-button" type="button" aria-label="البحث في المحتوى" title="البحث">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4m2.4-5.6a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+      </button>
+      <button id="themeToggle" class="icon-button" type="button" aria-label="تبديل الوضع الليلي" title="الوضع الليلي">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3V1m0 22v-2M4.2 4.2 2.8 2.8m18.4 18.4-1.4-1.4M3 12H1m22 0h-2M4.2 19.8l-1.4 1.4M21.2 2.8l-1.4 1.4M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z"/></svg>
+      </button>
+      <button id="menuToggle" class="icon-button mobile-only" type="button" aria-label="فتح قائمة المحاور" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <div id="searchPanel" class="search-panel" hidden>
+    <div class="search-inner">
+      <label for="siteSearch">ابحث في المحاضرة</label>
+      <div class="search-field">
+        <input id="siteSearch" type="search" placeholder="مثال: الاختصاص، التقادم، طلب التحكيم..." autocomplete="off" />
+        <button id="closeSearch" type="button" aria-label="إغلاق البحث">×</button>
+      </div>
+      <div id="searchResults" class="search-results" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <aside id="courseSidebar" class="sidebar" aria-label="محاور المحاضرة">
+      <div class="sidebar-card progress-card">
+        <div class="progress-head">
+          <span>نسبة الإنجاز</span>
+          <strong id="progressLabel">0%</strong>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="نسبة إتمام المحاضرة" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span id="progressBar"></span>
+        </div>
+        <small>تُحفظ النتيجة تلقائيًا على هذا الجهاز.</small>
+      </div>
+
+      <nav class="course-nav">
+        <a href="#home" class="nav-item active" data-section="home"><span>00</span>مدخل المحاضرة</a>
+        <a href="#commencement" class="nav-item" data-section="commencement"><span>01</span>بدء إجراءات التحكيم</a>
+        <a href="#request" class="nav-item" data-section="request"><span>02</span>طلب التحكيم</a>
+        <a href="#parties" class="nav-item" data-section="parties"><span>03</span>الأطراف والتمثيل</a>
+        <a href="#response" class="nav-item" data-section="response"><span>04</span>الرد على الطلب</a>
+        <a href="#objections" class="nav-item" data-section="objections"><span>05</span>الدفوع الأولية</a>
+        <a href="#effects" class="nav-item" data-section="effects"><span>06</span>الآثار والمواعيد</a>
+        <a href="#conference" class="nav-item" data-section="conference"><span>07</span>الجلسة الإجرائية الأولى</a>
+        <a href="#simulation" class="nav-item" data-section="simulation"><span>08</span>المحاكاة العملية</a>
+        <a href="#assessment" class="nav-item" data-section="assessment"><span>09</span>الاختبار الختامي</a>
+      </nav>
+
+      <button id="resetProgress" class="text-button" type="button">إعادة ضبط التقدم</button>
+    </aside>
+
+    <main id="mainContent" class="main-content">
+      <section id="home" class="course-section hero-section observed-section" data-title="مدخل المحاضرة" data-search="إجراءات التحكيم أهداف المحاضرة طلب التحكيم الدفوع الجلسة الإجرائية الأولى">
+        <div class="hero-copy">
+          <span class="eyebrow">المحاضرة الأولى · المسار الإجرائي</span>
+          <h1>إجراءات التحكيم:<br /><em>من تحريك الخصومة إلى ضبط مسارها</em></h1>
+          <p class="hero-lead">منصة تدريبية تفاعلية لفهم اللحظة التي تبدأ فيها خصومة التحكيم، وكيف يُبنى ملفها الإجرائي، وتُدار دفوعها الأولية، وتُصمَّم خريطة سيرها منذ اليوم الأول.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#commencement">ابدأ المحاضرة</a>
+            <button id="printGuide" class="secondary-button" type="button">طباعة ملخص المحاضرة</button>
+          </div>
+          <div class="course-meta">
+            <div><strong>المحاضر</strong><span>د. أحمد محمد عبدالسلام</span></div>
+            <div><strong>المستوى</strong><span>مهني متقدم</span></div>
+            <div><strong>النمط</strong><span>تعلم ذاتي + تطبيق</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="خريطة إجراءات التحكيم">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="visual-core">
+            <span>ملف</span>
+            <strong>التحكيم</strong>
+          </div>
+          <div class="visual-node node-one">طلب التحكيم</div>
+          <div class="visual-node node-two">الرد والدفوع</div>
+          <div class="visual-node node-three">الأمر الإجرائي</div>
+        </div>
+
+        <div class="objectives-grid">
+          <article>
+            <span class="card-number">01</span>
+            <h3>تحديد نقطة البداية</h3>
+            <p>التمييز بين إرسال الإخطار، وتسلمه، وقيد الطلب لدى المؤسسة، وتشكيل هيئة التحكيم.</p>
+          </article>
+          <article>
+            <span class="card-number">02</span>
+            <h3>بناء الطلب والرد</h3>
+            <p>تحويل الوقائع والمطالبات إلى ملف إجرائي مستوفٍ للبيانات والوثائق الأساسية.</p>
+          </article>
+          <article>
+            <span class="card-number">03</span>
+            <h3>إدارة المخاطر المبكرة</h3>
+            <p>اكتشاف دفوع الاختصاص والقبول والتمثيل والمواعيد قبل أن تتحول إلى أزمة إجرائية.</p>
+          </article>
+          <article>
+            <span class="card-number">04</span>
+            <h3>تصميم الخصومة</h3>
+            <p>إعداد جدول إجرائي متوازن يضمن المساواة وحق الدفاع وكفاءة إدارة النزاع.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="commencement" class="course-section observed-section lesson-section" data-title="بدء إجراءات التحكيم" data-search="متى تبدأ إجراءات التحكيم استلام الإخطار قيد الطلب المؤسسة التحكيم المؤسسي الحر الأونسيترال">
+        <div class="section-heading">
+          <span class="section-index">01</span>
+          <div>
+            <span class="eyebrow">السؤال المؤسس</span>
+            <h2>متى تبدأ إجراءات التحكيم؟</h2>
+          </div>
+          <button class="complete-button" data-complete="commencement" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="concept-banner">
+          <strong>لا توجد نقطة بداية واحدة تصلح لكل القضايا.</strong>
+          <p>تُحدَّد لحظة البدء وفق اتفاق الأطراف، والقواعد المؤسسية المختارة، وقانون مقر التحكيم، وأحيانًا القانون المنظم للتقادم.</p>
+        </div>
+
+        <div class="compare-grid">
+          <article class="comparison-card">
+            <div class="comparison-icon">ح</div>
+            <h3>التحكيم الحر</h3>
+            <p>تكون نقطة البدء غالبًا مرتبطة بتسلّم المدعى عليه طلب إحالة النزاع إلى التحكيم، ما لم يتفق الأطراف على غير ذلك.</p>
+            <ul class="check-list">
+              <li>راجع صياغة شرط التحكيم.</li>
+              <li>أثبت تاريخ ووسيلة التسلم.</li>
+              <li>تحقق من العنوان المتفق عليه للإخطارات.</li>
+            </ul>
+          </article>
+          <article class="comparison-card featured">
+            <span class="featured-label">الأكثر شيوعًا</span>
+            <div class="comparison-icon">م</div>
+            <h3>التحكيم المؤسسي</h3>
+            <p>ترتبط البداية عادة بتسلّم المؤسسة طلب التحكيم مستوفيًا ما تشترطه قواعدها، مع مراعاة أثر استكمال الرسوم أو النواقص.</p>
+            <ul class="check-list">
+              <li>افحص إصدار القواعد النافذ.</li>
+              <li>ميّز بين الإيداع والقيد والإخطار.</li>
+              <li>راقب مهلة استكمال المستندات والرسوم.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="timeline-card">
+          <div class="card-heading">
+            <div><span class="eyebrow">خريطة زمنية</span><h3>أربع لحظات يجب عدم الخلط بينها</h3></div>
+          </div>
+          <div class="timeline">
+            <div class="timeline-step"><span>1</span><strong>إرسال الإخطار</strong><small>خروج الطلب من سيطرة المرسل</small></div>
+            <div class="timeline-step"><span>2</span><strong>تسلّم الطلب</strong><small>واقعة قانونية يجب إثباتها</small></div>
+            <div class="timeline-step"><span>3</span><strong>قيد القضية</strong><small>قبولها إداريًا لدى المؤسسة</small></div>
+            <div class="timeline-step"><span>4</span><strong>تشكيل الهيئة</strong><small>بدء السلطة القضائية للهيئة</small></div>
+          </div>
+        </div>
+
+        <div class="practice-box" data-practice="commencement">
+          <span class="practice-label">اختبر تحليلك</span>
+          <h3>أرسل المدعي طلب التحكيم بالبريد الإلكتروني يوم 3 مارس، وتسلمته المؤسسة يوم 4 مارس، وأُخطر المدعى عليه يوم 7 مارس. أي تاريخ تعتمده؟</h3>
+          <div class="choice-row">
+            <button type="button" data-answer="wrong">3 مارس دائمًا</button>
+            <button type="button" data-answer="correct">يتحدد بعد مراجعة القواعد والاتفاق</button>
+            <button type="button" data-answer="wrong">7 مارس دائمًا</button>
+          </div>
+          <p class="practice-feedback" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section id="request" class="course-section observed-section lesson-section" data-title="طلب التحكيم" data-search="إعداد طلب التحكيم بيانات الطلب أطراف الاتفاق الوقائع الطلبات التعيين الرسوم المستندات">
+        <div class="section-heading">
+          <span class="section-index">02</span>
+          <div><span class="eyebrow">وثيقة إطلاق الخصومة</span><h2>إعداد طلب التحكيم</h2></div>
+          <button class="complete-button" data-complete="request" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="two-column">
+          <div>
+            <p class="section-intro">طلب التحكيم ليس مذكرة موضوعية كاملة، لكنه أول وثيقة ترسم حدود النزاع وتكشف سلامة البناء الإجرائي. الصياغة الجيدة توازن بين الكفاية والدقة وعدم استنفاد الحجج قبل أوانها.</p>
+            <div class="accordion" data-accordion>
+              <article class="accordion-item open">
+                <button class="accordion-trigger" type="button" aria-expanded="true"><span>أولًا: تعريف الخصومة</span><b>−</b></button>
+                <div class="accordion-content">
+                  <p>بيانات الأطراف، وصفاتهم، وعناوين الإخطار، وممثليهم، وأي أطراف يراد ضمها أو الاستناد إلى اتفاق التحكيم في مواجهتها.</p>
+                </div>
+              </article>
+              <article class="accordion-item">
+                <button class="accordion-trigger" type="button" aria-expanded="false"><span>ثانيًا: سند الاختصاص</span><b>+</b></button>
+                <div class="accordion-content">
+                  <p>نص اتفاق التحكيم، والعقد أو العقود التي يتصل بها، ومقر التحكيم، واللغة، والقانون الواجب التطبيق، والقواعد المؤسسية إن وجدت.</p>
+                </div>
+              </article>
+              <article class="accordion-item">
+                <button class="accordion-trigger" type="button" aria-expanded="false"><span>ثالثًا: موجز النزاع والطلبات</span><b>+</b></button>
+                <div class="accordion-content">
+                  <p>تسلسل الوقائع الجوهرية، والطبيعة القانونية للمطالبات، وقيمة النزاع أو طريقة تقديرها، والطلبات النهائية أو المؤقتة.</p>
+                </div>
+              </article>
+              <article class="accordion-item">
+                <button class="accordion-trigger" type="button" aria-expanded="false"><span>رابعًا: تشكيل الهيئة</span><b>+</b></button>
+                <div class="accordion-content">
+                  <p>عدد المحكمين، وبيانات المحكم المسمى إن كان التعيين مطلوبًا، أو مقترح آلية التشكيل، مع الانتباه لمتطلبات الاستقلال والحياد.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="document-card">
+            <div class="document-top"><span></span><span></span><span></span></div>
+            <div class="document-paper">
+              <small>نموذج هيكلي</small>
+              <h3>طلب تحكيم</h3>
+              <ol>
+                <li>بيانات الأطراف والتمثيل</li>
+                <li>اتفاق التحكيم والقواعد الواجبة</li>
+                <li>عرض موجز للوقائع</li>
+                <li>أساس المطالبات</li>
+                <li>الطلبات وقيمة النزاع</li>
+                <li>تشكيل هيئة التحكيم</li>
+                <li>قائمة المستندات والمرفقات</li>
+              </ol>
+              <button id="copyTemplate" type="button">نسخ الهيكل</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="risk-grid">
+          <article><span>خطر 01</span><h3>طلب غامض</h3><p>قد يربك تحديد نطاق النزاع أو احتساب الرسوم أو إعداد الرد.</p></article>
+          <article><span>خطر 02</span><h3>خصم غير صحيح</h3><p>الخلط بين الشركة الأم والتابعة أو الاسم التجاري والشخص القانوني.</p></article>
+          <article><span>خطر 03</span><h3>اتفاق ناقص</h3><p>إرفاق صفحة التوقيع دون الشروط العامة أو التعديلات التي تضم شرط التحكيم.</p></article>
+        </div>
+      </section>
+
+      <section id="parties" class="course-section observed-section lesson-section" data-title="الأطراف والتمثيل القانوني" data-search="تحديد الأطراف الصفات التمثيل القانوني الشخصية الاعتبارية الوكالة التفويض الشركة الأم التابعة">
+        <div class="section-heading">
+          <span class="section-index">03</span>
+          <div><span class="eyebrow">هندسة الخصومة</span><h2>تحديد الأطراف وصفاتهم وتمثيلهم</h2></div>
+          <button class="complete-button" data-complete="parties" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="diagnostic-grid">
+          <article class="diagnostic-card">
+            <span class="diagnostic-letter">A</span>
+            <h3>من وقّع العقد؟</h3>
+            <p>ابدأ بالشخص القانوني الوارد اسمه في العقد وصفحة التوقيع والسجل التجاري.</p>
+          </article>
+          <article class="diagnostic-card">
+            <span class="diagnostic-letter">B</span>
+            <h3>من التزم فعليًا؟</h3>
+            <p>حلّل الضمانات، والتنازل، والخلافة، والمراسلات، ودور الشركات المرتبطة.</p>
+          </article>
+          <article class="diagnostic-card">
+            <span class="diagnostic-letter">C</span>
+            <h3>من يملك التمثيل؟</h3>
+            <p>تحقق من الوكالة، وسلطة التوقيع، وقرار مجلس الإدارة، وأي قيود قانونية خاصة.</p>
+          </article>
+        </div>
+
+        <div class="decision-lab">
+          <div class="card-heading"><div><span class="eyebrow">مختبر القرار</span><h3>هل تذكر الشركة الأم كطرف؟</h3></div></div>
+          <div class="decision-flow">
+            <button type="button" data-flow="signed">هل وقّعت اتفاق التحكيم؟</button>
+            <span>←</span>
+            <button type="button" data-flow="conduct">هل توجد وقائع قانونية لامتداد الاتفاق؟</button>
+            <span>←</span>
+            <button type="button" data-flow="law">هل يسمح القانون الواجب بهذا الامتداد؟</button>
+          </div>
+          <div id="flowExplanation" class="flow-explanation">اضغط على كل سؤال لعرض نقطة الفحص القانونية.</div>
+        </div>
+
+        <div class="legal-note">
+          <strong>قاعدة عمل:</strong>
+          <p>لا تجعل الرغبة في توسيع دائرة الضمان المالي بديلًا عن إثبات الرابطة القانونية باتفاق التحكيم. الخطأ في تحديد الطرف قد يهدد الاختصاص أو التنفيذ.</p>
+        </div>
+      </section>
+
+      <section id="response" class="course-section observed-section lesson-section" data-title="الرد على طلب التحكيم" data-search="الرد على طلب التحكيم إنكار قبول طلبات مقابلة محكم اختصاص تحفظ الدفوع">
+        <div class="section-heading">
+          <span class="section-index">04</span>
+          <div><span class="eyebrow">أول دفاع مكتوب</span><h2>الرد على طلب التحكيم</h2></div>
+          <button class="complete-button" data-complete="response" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="response-map">
+          <div class="map-center">الرد</div>
+          <article><span>01</span><h3>الموقف من الوقائع</h3><p>قبول، إنكار، أو عدم علم، دون تناقض مع استراتيجية الدفاع اللاحقة.</p></article>
+          <article><span>02</span><h3>الاختصاص والقبول</h3><p>إبداء التحفظات والدفوع في الوقت والطريقة اللذين تفرضهما القواعد.</p></article>
+          <article><span>03</span><h3>الطلبات المقابلة</h3><p>بيان أساسها، وصلتها باتفاق التحكيم، وقيمتها الأولية.</p></article>
+          <article><span>04</span><h3>تشكيل الهيئة</h3><p>تسمية المحكم أو إبداء الرأي في العدد والمؤهلات وآلية التعيين.</p></article>
+        </div>
+
+        <div class="strategy-table-wrap">
+          <table class="strategy-table">
+            <thead><tr><th>المسألة</th><th>قرار مبكر مطلوب</th><th>خطر التأخير</th></tr></thead>
+            <tbody>
+              <tr><td>الاختصاص</td><td>إبداء الدفع أو التحفظ صراحة</td><td>السقوط أو تفسير الصمت كقبول إجرائي</td></tr>
+              <tr><td>الطلب المقابل</td><td>تحديد ما إذا كان يقدم مع الرد</td><td>رسوم إضافية أو رفض التقديم المتأخر</td></tr>
+              <tr><td>المحكم</td><td>فحص التعارضات والتوافر</td><td>فوات مهلة التعيين وانتقال السلطة للمؤسسة</td></tr>
+              <tr><td>المستندات</td><td>حفظ الأدلة وإيقاف الإتلاف الدوري</td><td>فقد أدلة أو نزاع حول سلامة الحفظ</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="objections" class="course-section observed-section lesson-section" data-title="الدفوع الأولية" data-search="الدفع بعدم الاختصاص عدم القبول الاختصاص بالاختصاص بطلان الاتفاق نطاق الاتفاق شروط سابقة التحكيم">
+        <div class="section-heading">
+          <span class="section-index">05</span>
+          <div><span class="eyebrow">بوابات الخصومة</span><h2>الدفوع الأولية: الاختصاص أم القبول؟</h2></div>
+          <button class="complete-button" data-complete="objections" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="split-panel">
+          <article class="split-card jurisdiction">
+            <span class="panel-tag">Jurisdiction</span>
+            <h3>دفع بعدم الاختصاص</h3>
+            <p>يتجه إلى سلطة الهيئة ذاتها في نظر النزاع أو جزء منه.</p>
+            <ul>
+              <li>انعدام أو بطلان اتفاق التحكيم.</li>
+              <li>خروج النزاع أو الطرف عن نطاق الاتفاق.</li>
+              <li>عدم قابلية الموضوع للتحكيم.</li>
+              <li>تجاوز حدود التفويض.</li>
+            </ul>
+          </article>
+          <article class="split-card admissibility">
+            <span class="panel-tag">Admissibility</span>
+            <h3>دفع بعدم القبول</h3>
+            <p>يفترض أصل السلطة، لكنه يعترض على ملاءمة أو توقيت سماع المطالبة.</p>
+            <ul>
+              <li>عدم استيفاء خطوة تفاوض أو وساطة.</li>
+              <li>سبق الفصل أو التنازل بحسب التكييف.</li>
+              <li>تقديم المطالبة قبل أوانها.</li>
+              <li>قصور إجرائي قابل للتدارك.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="issue-sorter">
+          <div class="card-heading"><div><span class="eyebrow">تمرين تصنيف</span><h3>اسحب ذهنيًا كل مسألة إلى موضعها</h3></div></div>
+          <div class="sorter-items">
+            <button type="button" data-category="jurisdiction">العقد لا يتضمن شرط تحكيم</button>
+            <button type="button" data-category="admissibility">لم تنقضِ مهلة التفاوض</button>
+            <button type="button" data-category="jurisdiction">المطالبة ناشئة عن عقد آخر</button>
+            <button type="button" data-category="admissibility">الطلب قُدّم قبل استحقاق الدين</button>
+          </div>
+          <p id="sorterFeedback">اختر مسألة لعرض تصنيفها المبدئي، مع بقاء التكييف النهائي رهين القانون والقواعد والوقائع.</p>
+        </div>
+
+        <div class="warning-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.6 2.2 18a2 2 0 0 0 1.8 3h16a2 2 0 0 0 1.8-3L13.7 3.6a2 2 0 0 0-3.4 0Z"/></svg>
+          <div><strong>تنبيه منهجي</strong><p>التمييز بين الاختصاص والقبول ليس موحدًا في جميع النظم. أثر التكييف يظهر خصوصًا في نطاق رقابة القضاء على قرار الهيئة.</p></div>
+        </div>
+      </section>
+
+      <section id="effects" class="course-section observed-section lesson-section" data-title="أثر بدء التحكيم على المواعيد والتقادم" data-search="أثر بدء التحكيم المواعيد التقادم قطع وقف حفظ الحقوق الإخطارات القانون الواجب التطبيق">
+        <div class="section-heading">
+          <span class="section-index">06</span>
+          <div><span class="eyebrow">الزمن القانوني</span><h2>أثر البدء على المواعيد والتقادم</h2></div>
+          <button class="complete-button" data-complete="effects" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="clock-layout">
+          <div class="legal-clock" aria-hidden="true">
+            <span class="hand hand-one"></span><span class="hand hand-two"></span><b>12</b><b>3</b><b>6</b><b>9</b>
+          </div>
+          <div>
+            <p class="section-intro">لا يُفترض تلقائيًا أن مجرد إرسال الطلب يقطع التقادم في كل نظام. يجب فصل ثلاثة أسئلة: ما القانون المنظم للتقادم؟ ما الواقعة التي يرتب عليها الأثر؟ وهل استوفى الطلب والإخطار شروط هذه الواقعة؟</p>
+            <div class="question-stack">
+              <article><span>1</span><div><h3>أي قانون يحكم التقادم؟</h3><p>قد يكون قانون الحق الموضوعي، أو قانونًا آخر وفق قواعد تنازع القوانين.</p></div></article>
+              <article><span>2</span><div><h3>ما الأثر القانوني؟</h3><p>قطع المدة وبدء مدة جديدة، أو وقف سريانها مؤقتًا، أو عدم ترتيب أثر.</p></div></article>
+              <article><span>3</span><div><h3>ما الحدث المنشئ للأثر؟</h3><p>إيداع الطلب، أو تسلّمه، أو صحة إعلانه، أو اتخاذ إجراء محدد أمام جهة مختصة.</p></div></article>
+            </div>
+          </div>
+        </div>
+
+        <div class="deadline-calculator">
+          <div>
+            <span class="eyebrow">أداة تدريبية</span>
+            <h3>حاسبة مهلة الرد</h3>
+            <p>أدخل تاريخ استلام الطلب وعدد الأيام. النتيجة تعليمية ولا تراعي العطلات أو قواعد الحساب الخاصة.</p>
+          </div>
+          <div class="calculator-fields">
+            <label>تاريخ الاستلام<input id="receivedDate" type="date" /></label>
+            <label>عدد الأيام<input id="deadlineDays" type="number" min="1" max="365" value="30" /></label>
+            <button id="calculateDeadline" type="button">احسب</button>
+          </div>
+          <output id="deadlineResult">ستظهر النتيجة هنا.</output>
+        </div>
+      </section>
+
+      <section id="conference" class="course-section observed-section lesson-section" data-title="الجلسة الإجرائية الأولى" data-search="الجلسة الإجرائية الأولى مؤتمر إدارة الدعوى الأمر الإجرائي الأول الجدول الإجرائي الأدلة السرية الأمن السيبراني">
+        <div class="section-heading">
+          <span class="section-index">07</span>
+          <div><span class="eyebrow">غرفة قيادة الخصومة</span><h2>الجلسة الإجرائية الأولى</h2></div>
+          <button class="complete-button" data-complete="conference" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="conference-hero">
+          <div>
+            <span class="eyebrow">ليست جلسة بروتوكولية</span>
+            <h3>القرارات التي تُتخذ هنا قد تحدد كلفة التحكيم ومدته وعدالته.</h3>
+            <p>الهدف هو تحويل قواعد عامة واتفاقات متفرقة إلى نظام تشغيل واضح للخصومة، غالبًا عبر الأمر الإجرائي الأول والجدول الزمني.</p>
+          </div>
+          <div class="conference-table" aria-hidden="true">
+            <span class="seat seat-one"></span><span class="seat seat-two"></span><span class="seat seat-three"></span><span class="seat seat-four"></span><span class="seat seat-five"></span><span class="seat seat-six"></span>
+            <div>PO1</div>
+          </div>
+        </div>
+
+        <div class="agenda-grid">
+          <article><span>01</span><h3>الطلبات والمذكرات</h3><p>عدد الجولات، وترتيبها، وحدود تعديل الطلبات.</p></article>
+          <article><span>02</span><h3>الإثبات</h3><p>المستندات، والشهود، والخبراء، وطلبات الإنتاج.</p></article>
+          <article><span>03</span><h3>السرية والتقنية</h3><p>منصة التبادل، وأمن الملفات، وحماية البيانات.</p></article>
+          <article><span>04</span><h3>الجلسات</h3><p>حضورية أو افتراضية، واللغة، والترجمة، والتسجيل.</p></article>
+          <article><span>05</span><h3>المواعيد</h3><p>طريقة الحساب، والتمديد، والعطلات، والمنطقة الزمنية.</p></article>
+          <article><span>06</span><h3>الكفاءة والتناسب</h3><p>مواءمة الإجراء مع قيمة النزاع وتعقيده.</p></article>
+        </div>
+
+        <div class="po-builder">
+          <div class="card-heading"><div><span class="eyebrow">منشئ الأمر الإجرائي</span><h3>اختر البنود التي تحتاجها قضيتك</h3></div></div>
+          <div class="builder-options">
+            <label><input type="checkbox" value="تحديد وسيلة الإخطارات وعناوينها" /> الإخطارات</label>
+            <label><input type="checkbox" value="اعتماد جدول المذكرات والمرفقات" /> المذكرات</label>
+            <label><input type="checkbox" value="قواعد تقديم المستندات وطلبات الإنتاج" /> المستندات</label>
+            <label><input type="checkbox" value="تنظيم أدلة الشهود والخبراء" /> الشهود والخبراء</label>
+            <label><input type="checkbox" value="ضوابط السرية وحماية البيانات" /> السرية</label>
+            <label><input type="checkbox" value="ترتيبات الجلسة الحضورية أو الافتراضية" /> الجلسة</label>
+          </div>
+          <button id="generatePO" class="primary-button" type="button">أنشئ مسودة جدول البنود</button>
+          <pre id="poOutput" class="po-output">اختر بندين على الأقل لتكوين المسودة.</pre>
+        </div>
+      </section>
+
+      <section id="simulation" class="course-section observed-section lesson-section" data-title="المحاكاة العملية" data-search="تطبيق عملي محاكاة نزاع عقد مقاولات طلب تحكيم رد دفع اختصاص جلسة إجرائية">
+        <div class="section-heading">
+          <span class="section-index">08</span>
+          <div><span class="eyebrow">ملف القضية</span><h2>محاكاة: مشروع الواحة الذكية</h2></div>
+          <button class="complete-button" data-complete="simulation" type="button">وضع علامة مكتمل</button>
+        </div>
+
+        <div class="case-file">
+          <div class="case-stamp">CASE<br />01</div>
+          <div>
+            <span class="eyebrow">الوقائع المختصرة</span>
+            <h3>شركة إنشاءات تطالب بتمديد مدة وتعويضات، وصاحب العمل يتمسك بشرط تفاوض سابق وبأن المطالبة قُدمت ضد شركة غير موقعة.</h3>
+          </div>
+          <dl>
+            <div><dt>العقد</dt><dd>إنشاء مركز بيانات</dd></div>
+            <div><dt>القواعد</dt><dd>تحكيم مؤسسي</dd></div>
+            <div><dt>المقر</dt><dd>القاهرة</dd></div>
+            <div><dt>اللغة</dt><dd>العربية</dd></div>
+          </dl>
+        </div>
+
+        <div class="simulation-steps">
+          <article class="sim-step active" data-sim-step="1"><button type="button"><span>1</span>حلّل نقطة البدء</button><div><p>اطلب نسخة القواعد النافذة، وإيصال المؤسسة، وإثبات الإخطار، وافصل بين بدء التحكيم وبين تشكيل الهيئة.</p></div></article>
+          <article class="sim-step" data-sim-step="2"><button type="button"><span>2</span>راجع أطراف الخصومة</button><div><p>قارن الاسم الوارد بالعقد والسجل والتوقيع والمراسلات. حدّد أساس إدخال أي طرف غير موقع قبل صياغة الطلب.</p></div></article>
+          <article class="sim-step" data-sim-step="3"><button type="button"><span>3</span>كيّف الدفع السابق</button><div><p>حلّل صياغة شرط التفاوض ومدته وطبيعته، ثم ناقش هل المسألة اختصاص أم قبول وما أثر عدم الاستيفاء.</p></div></article>
+          <article class="sim-step" data-sim-step="4"><button type="button"><span>4</span>صمّم الجلسة الأولى</button><div><p>اقترح فصلًا مبكرًا في الدفع إن كان حاسمًا، مع جدول متناسب يحفظ حق الطرفين في عرض موقفهما.</p></div></article>
+        </div>
+
+        <div class="assignment-card">
+          <div><span class="eyebrow">تكليف مهني</span><h3>مذكرة استراتيجية من صفحة واحدة</h3><p>اكتب توصيتك بشأن: تاريخ بدء التحكيم، صحة تحديد الأطراف، تكييف شرط التفاوض، وثلاث مسائل يجب إدراجها في الأمر الإجرائي الأول.</p></div>
+          <textarea id="assignmentText" rows="8" placeholder="اكتب تحليلك هنا... يُحفظ النص تلقائيًا على جهازك."></textarea>
+          <div class="assignment-actions"><span id="wordCount">0 كلمة</span><button id="downloadAssignment" type="button">تنزيل التكليف</button></div>
+        </div>
+      </section>
+
+      <section id="assessment" class="course-section observed-section lesson-section" data-title="الاختبار الختامي" data-search="اختبار إجراءات التحكيم شهادة إتمام أسئلة تقييم">
+        <div class="section-heading">
+          <span class="section-index">09</span>
+          <div><span class="eyebrow">قياس الاستيعاب</span><h2>الاختبار الختامي</h2></div>
+        </div>
+
+        <div id="quizIntro" class="quiz-intro">
+          <div class="quiz-score-ring"><strong>10</strong><span>أسئلة</span></div>
+          <div><h3>هل تستطيع إدارة المرحلة الأولى من خصومة التحكيم؟</h3><p>النجاح من 70%. يمكنك إعادة الاختبار، وتبقى أفضل نتيجة محفوظة على جهازك.</p><button id="startQuiz" class="primary-button" type="button">ابدأ الاختبار</button></div>
+        </div>
+
+        <form id="quizForm" class="quiz-form" hidden></form>
+        <div id="quizResult" class="quiz-result" hidden aria-live="polite"></div>
+
+        <div id="certificateCard" class="certificate-card" hidden>
+          <div class="certificate-seal">✓</div>
+          <span>شهادة إتمام رقمية</span>
+          <h3>إجراءات التحكيم</h3>
+          <p>تُمنح للمتدرب/ة بعد إتمام المحاور واجتياز الاختبار الختامي.</p>
+          <label>اسم المتدرب<input id="traineeName" type="text" placeholder="اكتب الاسم كما سيظهر في الشهادة" /></label>
+          <button id="printCertificate" type="button">طباعة الشهادة</button>
+        </div>
+      </section>
+
+      <section class="course-section reference-section">
+        <div class="section-heading compact-heading">
+          <span class="section-index">R</span>
+          <div><span class="eyebrow">مرجع سريع</span><h2>قاموس المحاضرة</h2></div>
+        </div>
+        <div class="glossary-grid">
+          <article><strong>طلب التحكيم</strong><p>الوثيقة التي يُباشر بها المدعي إجراءات التحكيم وفق الاتفاق والقواعد.</p></article>
+          <article><strong>الاختصاص بالاختصاص</strong><p>سلطة هيئة التحكيم في الفصل في الاعتراضات المتعلقة باختصاصها.</p></article>
+          <article><strong>الدفع بعدم القبول</strong><p>اعتراض على سماع المطالبة في حالتها أو توقيتها دون إنكار أصل سلطة الهيئة.</p></article>
+          <article><strong>الأمر الإجرائي الأول</strong><p>وثيقة تصدرها الهيئة لضبط القواعد التفصيلية والجدول الزمني للخصومة.</p></article>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div><strong>مختبر التحكيم</strong><p>محتوى تدريبي عام لا يُعد رأيًا قانونيًا في قضية محددة. يجب الرجوع إلى اتفاق التحكيم والقواعد المؤسسية والقانون الواجب التطبيق.</p></div>
+        <div><span>إعداد وإشراف</span><strong>د. أحمد محمد عبدالسلام</strong><small>محامٍ · محكّم · باحث قانوني</small></div>
+      </footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <template id="certificateTemplate">
+    <section class="print-certificate">
+      <div class="certificate-border">
+        <span class="certificate-kicker">شهادة إتمام</span>
+        <h1>إجراءات التحكيم</h1>
+        <p>تشهد منصة مختبر التحكيم بأن</p>
+        <h2 id="printTraineeName"></h2>
+        <p>قد أتم/أتمت المحاضرة التدريبية واجتاز/اجتازت الاختبار الختامي بنجاح.</p>
+        <div class="certificate-details"><span id="printScore"></span><span id="printDate"></span></div>
+        <footer><strong>د. أحمد محمد عبدالسلام</strong><small>المحاضر والمشرف العلمي</small></footer>
+      </div>
+    </section>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
