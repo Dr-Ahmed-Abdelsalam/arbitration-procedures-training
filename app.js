@@ -412,5 +412,143 @@
     })[char]);
   }
 
+
+  // Google-style motion layer
+  function initMotionLayer() {
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const topbar = $('.topbar');
+
+    const progress = document.createElement('div');
+    progress.className = 'scroll-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(progress);
+
+    const updateScrollProgress = () => {
+      const doc = document.documentElement;
+      const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+      progress.style.transform = `scaleX(${Math.min(1, Math.max(0, window.scrollY / max))})`;
+    };
+
+    let lastY = window.scrollY;
+    let scrollTicking = false;
+    const onScroll = () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        topbar.classList.toggle('is-scrolled', currentY > 16);
+        topbar.classList.toggle('is-hidden', currentY > lastY && currentY > 150);
+        if (currentY < 24) topbar.classList.remove('is-hidden');
+        lastY = currentY;
+        updateScrollProgress();
+        scrollTicking = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateScrollProgress();
+
+    const revealSelector = [
+      '.section-heading', '.concept-banner', '.comparison-card', '.timeline-card',
+      '.practice-box', '.two-column > *', '.risk-grid > article',
+      '.diagnostic-grid > article', '.decision-lab', '.legal-note',
+      '.response-map > article', '.strategy-table-wrap', '.split-panel',
+      '.issue-sorter', '.warning-box', '.clock-layout > *',
+      '.deadline-calculator', '.conference-hero > *', '.agenda-grid > article',
+      '.po-builder', '.case-file', '.sim-step', '.assignment-card',
+      '.quiz-intro', '.reference-section .section-heading', '.glossary-grid > article'
+    ].join(',');
+
+    const revealTargets = $$(revealSelector).filter((item, index, all) => all.indexOf(item) === index);
+    revealTargets.forEach((element, index) => {
+      element.classList.add('reveal-target');
+      element.style.setProperty('--reveal-delay', `${(index % 5) * 55}ms`);
+    });
+
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('in-view', entry.isIntersecting);
+      });
+    }, { rootMargin: '-18% 0px -58% 0px', threshold: .05 });
+    $$('.course-section').forEach(section => sectionObserver.observe(section));
+
+    if (reduceMotion) {
+      revealTargets.forEach(element => element.classList.add('is-visible'));
+      return;
+    }
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -9% 0px', threshold: .08 });
+    revealTargets.forEach(element => revealObserver.observe(element));
+
+    const cardSelector = [
+      '.objectives-grid article', '.comparison-card', '.risk-grid article',
+      '.diagnostic-card', '.response-map article', '.question-stack article',
+      '.agenda-grid article', '.glossary-grid article', '.quiz-question',
+      '.case-file', '.timeline-card', '.decision-lab', '.issue-sorter',
+      '.po-builder', '.assignment-card'
+    ].join(',');
+
+    $$(cardSelector).forEach(card => {
+      card.classList.add('motion-card');
+      card.addEventListener('pointermove', event => {
+        if (event.pointerType === 'touch') return;
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        card.style.setProperty('--card-ry', `${(x - .5) * 3.5}deg`);
+        card.style.setProperty('--card-rx', `${(.5 - y) * 3.5}deg`);
+        card.style.setProperty('--glow-x', `${x * 100}%`);
+        card.style.setProperty('--glow-y', `${y * 100}%`);
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.removeProperty('--card-rx');
+        card.style.removeProperty('--card-ry');
+      });
+    });
+
+    const heroVisual = $('.hero-visual');
+    if (heroVisual) {
+      const heroSection = $('.hero-section');
+      heroSection.addEventListener('pointermove', event => {
+        if (event.pointerType === 'touch') return;
+        const rect = heroSection.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        heroVisual.style.setProperty('--hero-ry', `${x * 5}deg`);
+        heroVisual.style.setProperty('--hero-rx', `${-y * 5}deg`);
+        heroVisual.style.setProperty('--hero-x', `${x * 10}px`);
+        heroVisual.style.setProperty('--hero-y', `${y * 10}px`);
+      });
+      heroSection.addEventListener('pointerleave', () => {
+        ['--hero-rx', '--hero-ry', '--hero-x', '--hero-y'].forEach(name => heroVisual.style.removeProperty(name));
+      });
+    }
+
+    const rippleSelector = [
+      '.primary-button', '.secondary-button', '.icon-button', '.complete-button',
+      '.choice-row button', '.decision-flow button', '.sorter-items button',
+      '.calculator-fields button', '.assignment-actions button', '.quiz-submit',
+      '.quiz-result button', '.certificate-card button', '.document-paper button'
+    ].join(',');
+
+    document.addEventListener('pointerdown', event => {
+      const button = event.target.closest(rippleSelector);
+      if (!button) return;
+      const rect = button.getBoundingClientRect();
+      const dot = document.createElement('span');
+      dot.className = 'ripple-dot';
+      dot.style.left = `${event.clientX - rect.left}px`;
+      dot.style.top = `${event.clientY - rect.top}px`;
+      button.appendChild(dot);
+      dot.addEventListener('animationend', () => dot.remove(), { once: true });
+    });
+  }
+
+  initMotionLayer();
   updateProgressUI();
 })();
